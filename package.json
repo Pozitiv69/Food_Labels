@@ -1,0 +1,25 @@
+{
+  "name": "food_labels",
+  "version": "1.0.0",
+  "description": "food ",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pozitiv69/Food_Labels.git"
+  },
+  "keywords": [
+    "food",
+    "labels"
+  ],
+  "author": "Cherkashyn Dmytro",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Pozitiv69/Food_Labels/issues"
+  },
+  "homepage": "https://github.com/Pozitiv69/Food_Labels#readme",
+  "dependencies": {}
+}
