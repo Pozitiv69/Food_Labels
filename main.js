@@ -27,11 +27,15 @@ Object.keys(params)
     (param) => (qs += '&' + param + '=' + encodeURIComponent(params[param]))
   );
 // console.log(qs);
+
 qs = qs.substr(1);
+
 let mac = crypto.createHmac('sha1', secret);
+
 mac.update(
   'GET&' + encodeURIComponent(API_BASE) + '&' + encodeURIComponent(qs)
 );
+
 qs =
   API_BASE +
   '?' +

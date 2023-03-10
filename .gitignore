@@ -5,3 +5,4 @@ node_modules
 *.png
 OAuth.js
 test.js
+.vscode
