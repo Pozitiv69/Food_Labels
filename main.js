@@ -3,7 +3,7 @@
 import querystring from 'node:querystring';
 import crypto from 'node:crypto';
 import https from 'node:https';
-import { consumerSecret, consumerKey } from './OAuth.js';
+import { consumerSecret, consumerKey } from './auth/OAuth.js';
 
 const API_BASE = 'https://platform.fatsecret.com/rest/server.api';
 
@@ -18,32 +18,36 @@ const params = {
   oauth_signature_method: 'HMAC-SHA1',
 };
 
-let qs = '';
-let secret = consumerSecret + '&';
+const qsc = () => {
+  let qs = '';
+  let secret = consumerSecret + '&';
 
-Object.keys(params)
-  .sort()
-  .forEach(
-    (param) => (qs += '&' + param + '=' + encodeURIComponent(params[param]))
+  Object.keys(params)
+    .sort()
+    .forEach(
+      (param) => (qs += '&' + param + '=' + encodeURIComponent(params[param]))
+    );
+
+  qs = qs.substr(1);
+
+  let mac = crypto.createHmac('sha1', secret);
+
+  mac.update(
+    'GET&' + encodeURIComponent(API_BASE) + '&' + encodeURIComponent(qs)
   );
-// console.log(qs);
 
-qs = qs.substr(1);
+  qs =
+    API_BASE +
+    '?' +
+    qs +
+    '&oauth_signature=' +
+    encodeURIComponent(mac.digest('base64'));
+  return qs;
+};
 
-let mac = crypto.createHmac('sha1', secret);
+const url = qsc();
 
-mac.update(
-  'GET&' + encodeURIComponent(API_BASE) + '&' + encodeURIComponent(qs)
-);
-
-qs =
-  API_BASE +
-  '?' +
-  qs +
-  '&oauth_signature=' +
-  encodeURIComponent(mac.digest('base64'));
-
-https.get(qs, (response) => {
+https.get(url, (response) => {
   let res = '';
   response.on('data', (chunk) => {
     res += chunk;
