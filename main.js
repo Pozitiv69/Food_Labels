@@ -1,6 +1,5 @@
 'use string';
 
-import querystring from 'node:querystring';
 import crypto from 'node:crypto';
 import https from 'node:https';
 import { consumerSecret, consumerKey } from './auth/OAuth.js';
@@ -57,9 +56,9 @@ https.get(url, (response) => {
   });
 });
 
-class FatSecret {
-  constructor(consumerKey, consumerSecret) {
-    this.key = consumerKey;
-    this.secret = consumerSecret;
-  }
-}
+// class FatSecret {
+//   constructor(consumerKey, consumerSecret) {
+//     this.key = consumerKey;
+//     this.secret = consumerSecret;
+//   }
+// }
