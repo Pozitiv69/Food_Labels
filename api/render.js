@@ -1,6 +1,6 @@
 'use strict';
 
-const memory = require('../memory.js');
+const memory = require('../db/memory.js');
 
 module.exports = async (name) => {
   const shape = memory.get(name);

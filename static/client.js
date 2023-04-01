@@ -24,10 +24,11 @@ const buildAPI = (methods) => {
   return api;
 };
 
-const api = buildAPI(['render', 'findFood']);
+const api = buildAPI(['render', 'find']);
 
 const show = async (el) => {
-  const svg = await api.render(el);
+  const label = await api.render(el);
   const output = document.getElementById('output');
-  output.innerHTML = svg;
+  output.innerHTML = label;
 };
+show();

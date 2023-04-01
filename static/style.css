@@ -1,16 +1,37 @@
 body {
   font-family: 'Montserrat', sans-serif;
-  background: #f5f7fa;
+  background-color: #e6e6e6;
 }
 
 h1 {
   color: #000;
+  font-size: 100px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
-.page404 {
+div {
+  margin: 10px;
+}
+
+.main {
+  justify-content: space-around;
   display: flex;
-  flex-direction: column;
-  text-align: center;
-  width: 800px;
+  width: 1200px;
   margin: 30px auto;
+  border: 3px solid rgb(101, 255, 122);
+}
+
+.input {
+  width: 400px;
+  background-color: rgb(193, 255, 234);
+  border: 3px solid rgb(101, 255, 122);
+  padding: 150px 10px;
+}
+
+.output {
+  width: 400px;
+  padding: 150px 10px;
+  border: 3px solid rgb(101, 255, 122);
+  background-color: rgb(193, 255, 234);
 }
